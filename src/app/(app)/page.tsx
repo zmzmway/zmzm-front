@@ -3,51 +3,38 @@
 import * as React from "react";
 import { toast } from "sonner";
 import { 
-  Check, 
-  ChevronRight, 
   Bell, 
-  Calendar, 
   CreditCard, 
-  Globe, 
   Keyboard, 
   User, 
   Settings,
-  Mail,
   Plus,
   Terminal,
   Loader2
 } from "lucide-react";
 
-import { Button } from "@/components/common/button";
-import { Badge } from "@/components/common/badge";
 import {
+  Button,
+  Badge,
   Card,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/common/card";
-import { Input } from "@/components/common/input";
-import { Label } from "@/components/common/label";
-import { Checkbox } from "@/components/common/checkbox";
-import {
+  Input,
+  Label,
+  Checkbox,
   Tabs,
   TabsContent,
   TabsList,
   TabsTrigger,
-} from "@/components/common/tabs";
-import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/components/common/avatar";
-import {
   Alert,
   AlertDescription,
   AlertTitle,
-} from "@/components/common/alert";
-import {
   Dialog,
   DialogContent,
   DialogDescription,
@@ -55,42 +42,30 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/common/dialog";
-import {
   Sheet,
   SheetContent,
   SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/common/sheet";
-import { Skeleton } from "@/components/common/skeleton";
-import {
+  Skeleton,
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/common/tooltip";
-import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuPortal,
   DropdownMenuSeparator,
   DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/components/common/dropdown-menu";
-import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/common/popover";
-import { Toaster } from "@/components/common/sonner";
+  Toaster,
+} from "@/components/common";
 
 export default function DemoPage() {
   return (
