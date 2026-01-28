@@ -1,25 +1,34 @@
 import { AxiosError, InternalAxiosRequestConfig, AxiosResponse } from "axios";
+import { STATUS_CODE } from "./constants";
 
-export const onRequest = (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
-  // Add authentication token or other headers here
-  return config;
+/* ================= REQUEST ================= */
+
+export const onRequest = {
+  request: (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
+    return config;
+  },
+
+  error: (error: AxiosError): Promise<AxiosError> => {
+    return Promise.reject(error);
+  },
 };
 
-export const onRequestError = (error: AxiosError): Promise<AxiosError> => {
-  return Promise.reject(error);
-};
+/* ================= RESPONSE ================= */
 
-export const onResponse = (response: AxiosResponse): AxiosResponse => {
-  return response;
-};
+export const onResponse = {
+  response: (response: AxiosResponse): AxiosResponse => {
+    return response;
+  },
 
-export const onResponseError = (error: AxiosError): Promise<AxiosError> => {
-  // Handle common error status codes (e.g., 401, 403, 500)
-  if (error.response) {
-    const { status } = error.response;
-    if (status === 401) {
-      // Handle unauthorized error
+  error: (error: AxiosError): Promise<AxiosError> => {
+    if (error.response) {
+      const { status } = error.response;
+
+      if (status === STATUS_CODE.UNAUTHORIZED) {
+        console.log("[interceptor] Unauthorized access");
+      }
     }
-  }
-  return Promise.reject(error);
+
+    return Promise.reject(error);
+  },
 };

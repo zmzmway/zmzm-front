@@ -1,16 +1,15 @@
 "use client";
 
-import * as React from "react";
 import { toast } from "sonner";
-import { 
-  Bell, 
-  CreditCard, 
-  Keyboard, 
-  User, 
+import {
+  Bell,
+  CreditCard,
+  Keyboard,
+  User,
   Settings,
   Plus,
   Terminal,
-  Loader2
+  Loader2,
 } from "lucide-react";
 
 import {
@@ -87,7 +86,9 @@ export default function DemoPage() {
       {/* 1. Typography & Colors (Condensed) */}
       <section className="space-y-4">
         <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-          <span className="w-8 h-8 rounded-full bg-gray-900 text-white flex items-center justify-center text-sm">1</span>
+          <span className="w-8 h-8 rounded-full bg-gray-900 text-white flex items-center justify-center text-sm">
+            1
+          </span>
           Colors & Typography
         </h2>
         <Card>
@@ -95,20 +96,35 @@ export default function DemoPage() {
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
               {[100, 200, 300, 400, 500, 600, 700, 800, 900].map((num) => (
                 <div key={num} className="space-y-1">
-                  <div className={`h-12 w-full rounded-lg bg-gray-${num} shadow-sm border border-gray-100`} />
-                  <div className="text-xs text-center font-mono text-gray-500">Gray {num}</div>
+                  <div
+                    className={`h-12 w-full rounded-lg bg-gray-${num} shadow-sm border border-gray-100`}
+                  />
+                  <div className="text-xs text-center font-mono text-gray-500">
+                    Gray {num}
+                  </div>
                 </div>
               ))}
             </div>
             <div className="space-y-2 border-t pt-6">
-              <h1 className="text-title-1 text-text-strong">Title 1 (24px, Bold)</h1>
-              <h2 className="text-title-2 text-text-strong">Title 2 (20px, Bold)</h2>
-              <h3 className="text-title-3 text-text-strong">Title 3 (18px, Semibold)</h3>
+              <h1 className="text-title-1 text-text-strong">
+                Title 1 (24px, Bold)
+              </h1>
+              <h2 className="text-title-2 text-text-strong">
+                Title 2 (20px, Bold)
+              </h2>
+              <h3 className="text-title-3 text-text-strong">
+                Title 3 (18px, Semibold)
+              </h3>
               <p className="text-text-normal">
-                Body text (Normal). This is the standard text for most content. 
-                <span className="text-text-alternative"> This is alternative text.</span>
+                Body text (Normal). This is the standard text for most content.
+                <span className="text-text-alternative">
+                  {" "}
+                  This is alternative text.
+                </span>
               </p>
-              <p className="text-caption-1 text-text-caption">Caption 1 (14px)</p>
+              <p className="text-caption-1 text-text-caption">
+                Caption 1 (14px)
+              </p>
             </div>
           </CardContent>
         </Card>
@@ -117,13 +133,17 @@ export default function DemoPage() {
       {/* 2. Buttons & Badges */}
       <section className="space-y-4">
         <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-          <span className="w-8 h-8 rounded-full bg-gray-900 text-white flex items-center justify-center text-sm">2</span>
+          <span className="w-8 h-8 rounded-full bg-gray-900 text-white flex items-center justify-center text-sm">
+            2
+          </span>
           Buttons & Badges
         </h2>
         <Card>
           <CardHeader>
             <CardTitle>Button Variants</CardTitle>
-            <CardDescription>Different styles and sizes for interactive elements.</CardDescription>
+            <CardDescription>
+              Different styles and sizes for interactive elements.
+            </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="flex flex-wrap gap-4">
@@ -138,7 +158,9 @@ export default function DemoPage() {
               <Button size="lg">Large</Button>
               <Button size="default">Default</Button>
               <Button size="sm">Small</Button>
-              <Button size="icon"><Plus className="h-4 w-4" /></Button>
+              <Button size="icon">
+                <Plus className="h-4 w-4" />
+              </Button>
               <Button className="rounded-full">Rounded Full</Button>
               <Button disabled>Disabled</Button>
               <Button>
@@ -162,14 +184,18 @@ export default function DemoPage() {
       {/* 3. Forms & Inputs */}
       <section className="space-y-4">
         <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-          <span className="w-8 h-8 rounded-full bg-gray-900 text-white flex items-center justify-center text-sm">3</span>
+          <span className="w-8 h-8 rounded-full bg-gray-900 text-white flex items-center justify-center text-sm">
+            3
+          </span>
           Forms & Inputs
         </h2>
         <div className="grid md:grid-cols-2 gap-6">
           <Card>
             <CardHeader>
               <CardTitle>Login Example</CardTitle>
-              <CardDescription>Standard input fields with labels.</CardDescription>
+              <CardDescription>
+                Standard input fields with labels.
+              </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-2">
@@ -205,7 +231,7 @@ export default function DemoPage() {
                 <Label>Disabled Input</Label>
                 <Input disabled type="email" placeholder="Email" />
               </div>
-               <div className="space-y-2">
+              <div className="space-y-2">
                 <Label>With Button</Label>
                 <div className="flex w-full max-w-sm items-center space-x-2">
                   <Input type="email" placeholder="Email" />
@@ -220,7 +246,9 @@ export default function DemoPage() {
       {/* 4. Feedback & Overlay */}
       <section className="space-y-4">
         <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-          <span className="w-8 h-8 rounded-full bg-gray-900 text-white flex items-center justify-center text-sm">4</span>
+          <span className="w-8 h-8 rounded-full bg-gray-900 text-white flex items-center justify-center text-sm">
+            4
+          </span>
           Feedback & Overlay
         </h2>
         <div className="grid md:grid-cols-3 gap-6">
@@ -237,7 +265,8 @@ export default function DemoPage() {
                   <DialogHeader>
                     <DialogTitle>Are you absolutely sure?</DialogTitle>
                     <DialogDescription>
-                      This action cannot be undone. This will permanently delete your account.
+                      This action cannot be undone. This will permanently delete
+                      your account.
                     </DialogDescription>
                   </DialogHeader>
                   <DialogFooter>
@@ -255,28 +284,37 @@ export default function DemoPage() {
                   <SheetHeader>
                     <SheetTitle>Edit Profile</SheetTitle>
                     <SheetDescription>
-                      Make changes to your profile here. Click save when you&apos;re done.
+                      Make changes to your profile here. Click save when
+                      you&apos;re done.
                     </SheetDescription>
                   </SheetHeader>
                   <div className="grid gap-4 py-4">
                     <div className="grid grid-cols-4 items-center gap-4">
-                      <Label htmlFor="name" className="text-right">Name</Label>
-                      <Input id="name" defaultValue="Pedro Duarte" className="col-span-3" />
+                      <Label htmlFor="name" className="text-right">
+                        Name
+                      </Label>
+                      <Input
+                        id="name"
+                        defaultValue="Pedro Duarte"
+                        className="col-span-3"
+                      />
                     </div>
                   </div>
                   <Button type="submit">Save changes</Button>
                 </SheetContent>
               </Sheet>
 
-              <Button 
-                variant="outline" 
-                onClick={() => toast("Event has been created", {
-                  description: "Sunday, December 03, 2023 at 9:00 AM",
-                  action: {
-                    label: "Undo",
-                    onClick: () => console.log("Undo"),
-                  },
-                })}
+              <Button
+                variant="outline"
+                onClick={() =>
+                  toast("Event has been created", {
+                    description: "Sunday, December 03, 2023 at 9:00 AM",
+                    action: {
+                      label: "Undo",
+                      onClick: () => console.log("Undo"),
+                    },
+                  })
+                }
               >
                 Show Toast
               </Button>
@@ -302,7 +340,9 @@ export default function DemoPage() {
                   <div className="grid gap-4">
                     <div className="space-y-2">
                       <h4 className="font-medium leading-none">Dimensions</h4>
-                      <p className="text-sm text-muted-foreground">Set the dimensions for the layer.</p>
+                      <p className="text-sm text-muted-foreground">
+                        Set the dimensions for the layer.
+                      </p>
                     </div>
                   </div>
                 </PopoverContent>
@@ -337,7 +377,9 @@ export default function DemoPage() {
       {/* 5. Data & Navigation */}
       <section className="space-y-4">
         <h2 className="text-xl font-bold text-gray-900 flex items-center gap-2">
-          <span className="w-8 h-8 rounded-full bg-gray-900 text-white flex items-center justify-center text-sm">5</span>
+          <span className="w-8 h-8 rounded-full bg-gray-900 text-white flex items-center justify-center text-sm">
+            5
+          </span>
           Data & Navigation
         </h2>
         <Card>
@@ -350,7 +392,10 @@ export default function DemoPage() {
               <TabsContent value="account" className="space-y-4 mt-4">
                 <div className="flex items-center gap-4 p-4 border rounded-lg">
                   <Avatar className="h-12 w-12">
-                    <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                    <AvatarImage
+                      src="https://github.com/shadcn.png"
+                      alt="@shadcn"
+                    />
                     <AvatarFallback>CN</AvatarFallback>
                   </Avatar>
                   <div className="space-y-1">
@@ -358,7 +403,7 @@ export default function DemoPage() {
                     <p className="text-sm text-gray-500">Design Engineer</p>
                   </div>
                   <div className="ml-auto">
-                     <DropdownMenu>
+                    <DropdownMenu>
                       <DropdownMenuTrigger asChild>
                         <Button variant="ghost" size="icon">
                           <Settings className="h-4 w-4" />
@@ -390,7 +435,7 @@ export default function DemoPage() {
                 </div>
                 <Card>
                   <CardHeader>
-                     <CardTitle>Skeleton Loading</CardTitle>
+                    <CardTitle>Skeleton Loading</CardTitle>
                   </CardHeader>
                   <CardContent className="flex items-center space-x-4">
                     <Skeleton className="h-12 w-12 rounded-full" />
@@ -406,7 +451,8 @@ export default function DemoPage() {
                   <CardHeader>
                     <CardTitle>Password</CardTitle>
                     <CardDescription>
-                      Change your password here. After saving, you&apos;ll be logged out.
+                      Change your password here. After saving, you&apos;ll be
+                      logged out.
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-2">

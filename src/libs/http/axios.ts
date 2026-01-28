@@ -1,15 +1,12 @@
 import axios, { AxiosInstance } from "axios";
-import { onRequest, onRequestError, onResponse, onResponseError } from "./interceptor";
+import { onRequest, onResponse } from "./interceptor";
+import { TIME_OUT, API_URL } from "./constants";
 
-const axiosInstance: AxiosInstance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || "",
-  timeout: 10000,
-  headers: {
-    "Content-Type": "application/json",
-  },
+export const api: AxiosInstance = axios.create({
+  baseURL: API_URL,
+  timeout: TIME_OUT,
+  // withCredentials: true,
 });
 
-axiosInstance.interceptors.request.use(onRequest, onRequestError);
-axiosInstance.interceptors.response.use(onResponse, onResponseError);
-
-export const http = axiosInstance;
+api.interceptors.request.use(onRequest.request, onRequest.error);
+api.interceptors.response.use(onResponse.response, onResponse.error);
