@@ -8,41 +8,39 @@
     ==========================
   */
   /* Primitive Grays */
-  --color-gray-100: #F2F4F6;
-  --color-gray-200: #E5E8EB;
-  --color-gray-300: #D1D6DB;
-  --color-gray-400: #B0B8C1;
-  --color-gray-500: #8B95A1;
-  --color-gray-600: #6B7684;
-  --color-gray-700: #4E5968;
-  --color-gray-800: #333D4B;
-  --color-gray-900: #191F28;
-  
+  --color-gray-100: #f2f4f6;
+  --color-gray-200: #e5e8eb;
+  --color-gray-300: #d1d6db;
+  --color-gray-400: #b0b8c1;
+  --color-gray-500: #8b95a1;
+  --color-gray-600: #6b7684;
+  --color-gray-700: #4e5968;
+  --color-gray-800: #333d4b;
+  --color-gray-900: #191f28;
+
   /* Primary Blue Scale */
-  --color-blue-100: #E8F3FF;
-  --color-blue-200: #C7E1FF;
-  --color-blue-300: #99C7FF;
-  --color-blue-400: #66A8FF;
-  --color-blue-500: #3182F6; /* Signature Blue */
-  --color-blue-600: #2469D9;
-  --color-blue-700: #1952BC;
-  --color-blue-800: #103C9F;
-  --color-blue-900: #092A82;
+  --color-blue-100: #e8f3ff;
+  --color-blue-200: #c7e1ff;
+  --color-blue-300: #99c7ff;
+  --color-blue-400: #66a8ff;
+  --color-blue-500: #3182f6; /* Signature Blue */
+  --color-blue-600: #2469d9;
+  --color-blue-700: #1952bc;
+  --color-blue-800: #103c9f;
+  --color-blue-900: #092a82;
 
   /* Status Colors */
-  --color-error: #F04452;
-  --color-success: #05D686;
+  --color-error: #f04452;
+  --color-success: #05d686;
   --color-info: var(--color-blue-500);
-  --color-warning: #FFBB00;
+  --color-warning: #ffbb00;
 
   /* Overlay */
   --color-overlay: rgba(0, 0, 0, 0.4);
 
   /* --- Semantic Names (Brand) --- */
   --color-primary: var(--color-blue-500);
-  --color-primary-foreground: #FFFFFF;
   --color-primary-hover: var(--color-blue-600);
-  --color-primary-low: var(--color-blue-100); /* 연한 블루 배경용 */
 
   /* --- Semantic Names (Text/Content) --- */
   --color-text-strong: var(--color-gray-900);
@@ -53,15 +51,13 @@
   --color-text-disabled: var(--color-gray-400);
 
   /* --- Semantic Names (Background & Border) --- */
-  --color-bg-base: var(--color-gray-100);
+  --color-background: var(--color-gray-100);
   --color-bg-disabled: var(--color-gray-200);
   --color-border-default: var(--color-gray-200);
   --color-border-active: var(--color-gray-300);
 
   /* Mapping for Tailwind System */
-  --color-background: var(--color-bg-base);
   --color-foreground: var(--color-text-strong);
-
 
   /* 
     ==========================
@@ -69,12 +65,12 @@
     ==========================
   */
   /* Titles (Size / LineHeight / LetterSpacing / Weight) */
-  --text-title-1: 1.5rem;   /* 24px */
+  --text-title-1: 1.5rem; /* 24px */
   --text-title-1--line-height: 1.35;
   --text-title-1--letter-spacing: -0.01em;
   --text-title-1--font-weight: 700;
 
-  --text-title-2: 1.25rem;  /* 20px */
+  --text-title-2: 1.25rem; /* 20px */
   --text-title-2--line-height: 1.4;
   --text-title-2--letter-spacing: -0.005em;
   --text-title-2--font-weight: 700;
@@ -90,16 +86,15 @@
   --text-caption-1--letter-spacing: 0;
   --text-caption-1--font-weight: 500;
 
-  --text-caption-2: 0.8125rem;/* 13px */
+  --text-caption-2: 0.8125rem; /* 13px */
   --text-caption-2--line-height: 1.5;
   --text-caption-2--letter-spacing: 0;
   --text-caption-2--font-weight: 500;
 
-  --text-caption-3: 0.75rem;  /* 12px */
+  --text-caption-3: 0.75rem; /* 12px */
   --text-caption-3--line-height: 1.5;
   --text-caption-3--letter-spacing: 0;
   --text-caption-3--font-weight: 500;
-
 
   /* 
     ==========================
@@ -127,7 +122,6 @@
   --blur-lg: 12px;
   --blur-xl: 20px;
 
-
   /* 
     ==========================
     ========= motion =========
@@ -135,26 +129,41 @@
   */
   /* Ease */
   --ease-spring: cubic-bezier(0.2, 0, 0.2, 1);
-  
+
   /* Animations */
   @keyframes slide-up {
-    from { transform: translateY(100%); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
   @keyframes fade-in {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
   @keyframes scale-press {
-    0% { transform: scale(1); }
-    50% { transform: scale(0.96); }
-    100% { transform: scale(1); }
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(0.96);
+    }
+    100% {
+      transform: scale(1);
+    }
   }
 
   --animate-slide-up: slide-up 0.5s var(--ease-spring) forwards;
   --animate-fade-in: fade-in 0.3s ease-out forwards;
   --animate-scale-press: scale-press 0.2s ease-out;
-
 
   /* 
     ==========================
@@ -169,7 +178,6 @@
   --spacing-safe-bottom: env(safe-area-inset-bottom);
   --spacing-safe-left: env(safe-area-inset-left);
   --spacing-safe-right: env(safe-area-inset-right);
-
 
   /* 
     ==========================
@@ -186,34 +194,36 @@
 @layer base {
   body {
     @apply min-h-dvh bg-background text-foreground antialiased;
+    font-family: var(--font-pretendard), sans-serif;
     -webkit-tap-highlight-color: transparent;
   }
 
-  button, a {
+  button,
+  a {
     @apply cursor-pointer;
   }
 }
 
 :root {
   /* Primitive Grays */
-  --gray-100: #F2F4F6;
-  --gray-200: #E5E8EB;
-  --gray-300: #D1D6DB;
-  --gray-400: #B0B8C1;
-  --gray-500: #8B95A1;
-  --gray-600: #6B7684;
-  --gray-700: #4E5968;
-  --gray-800: #333D4B;
-  --gray-900: #191F28;
+  --gray-100: #f2f4f6;
+  --gray-200: #e5e8eb;
+  --gray-300: #d1d6db;
+  --gray-400: #b0b8c1;
+  --gray-500: #8b95a1;
+  --gray-600: #6b7684;
+  --gray-700: #4e5968;
+  --gray-800: #333d4b;
+  --gray-900: #191f28;
 
   /* Primary Blue Scale */
-  --blue-100: #E8F3FF;
-  --blue-200: #C7E1FF;
-  --blue-300: #99C7FF;
-  --blue-400: #66A8FF;
-  --blue-500: #3182F6;
-  --blue-600: #2469D9;
-  --blue-700: #1952BC;
-  --blue-800: #103C9F;
-  --blue-900: #092A82;
+  --blue-100: #e8f3ff;
+  --blue-200: #c7e1ff;
+  --blue-300: #99c7ff;
+  --blue-400: #66a8ff;
+  --blue-500: #3182f6;
+  --blue-600: #2469d9;
+  --blue-700: #1952bc;
+  --blue-800: #103c9f;
+  --blue-900: #092a82;
 }

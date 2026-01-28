@@ -1,5 +1,3 @@
-import { Volume1 } from "lucide-react";
-
 export const API_URL = `${process.env.NEXT_PUBLIC_API_URL}/api` || "";
 export const TIME_OUT = 10000;
 

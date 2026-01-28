@@ -3,9 +3,17 @@
 import Script from 'next/script';
 import { useRef } from 'react';
 
+interface KakaoMaps {
+  maps: {
+    load: (callback: () => void) => void;
+    LatLng: new (lat: number, lng: number) => { lat: () => number; lng: () => number };
+    Map: new (container: HTMLElement, options: { center: { lat: () => number; lng: () => number }; level: number }) => unknown;
+  };
+}
+
 declare global {
   interface Window {
-    kakao: any;
+    kakao: KakaoMaps;
   }
 }
 
