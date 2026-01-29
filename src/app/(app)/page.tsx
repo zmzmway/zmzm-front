@@ -1,144 +1,146 @@
+"use client";
+
 import {
-  Avatar,
-  Badge,
-  Card,
-  Carousel,
+  Button,
+  Loading,
+  Skeleton,
+  Progress,
 } from "@/components";
+import { toast } from "sonner";
+import { useState, useEffect } from "react";
 
 export default function RootPage() {
+  const [progress, setProgress] = useState(0);
+
+  const startProgress = () => {
+    setProgress(0);
+    const interval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(interval);
+          return 100;
+        }
+        return prev + 1; // 1%씩 증가
+      });
+    }, 20); // 속도 조절
+  };
+
   return (
-    <div className="min-h-screen bg-gray-100 p-8 space-y-12 max-w-4xl mx-auto">
+    <div className="min-h-screen bg-gray-50 p-8 space-y-12 max-w-4xl mx-auto">
       <header className="space-y-2 pb-8 border-b border-gray-200">
-        <h1 className="text-title-1 font-bold text-gray-900">Display Components Showcase</h1>
-        <p className="text-gray-500">디자인 시스템의 디스플레이 요소들을 하나씩 점검합니다.</p>
+        <h1 className="text-title-1 font-bold text-gray-900">Feedback Components Showcase</h1>
+        <p className="text-gray-500">디자인 시스템의 피드백 요소들을 하나씩 점검합니다.</p>
       </header>
 
-      {/* 1. Card */}
+      {/* 1. Loading */}
       <section className="space-y-4">
-        <h2 className="text-title-3 font-bold text-gray-900">1. Card</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Card>
-            <Card.Header>
-              <Card.Title>기본 카드</Card.Title>
-              <Card.Description>가장 기본적인 카드 형태입니다.</Card.Description>
-            </Card.Header>
-            <Card.Content>
-              <p className="text-gray-700">카드의 본문 내용이 들어가는 영역입니다. 여백과 배경색을 확인하세요.</p>
-            </Card.Content>
-            <Card.Footer className="justify-end pt-4">
-              <span className="text-caption-2 text-gray-400">Footer 영역</span>
-            </Card.Footer>
-          </Card>
-
-          <Card className="bg-white">
-            <Card.Header>
-              <Card.Title>플랫 카드</Card.Title>
-              <Card.Description>그림자 없는 깔끔한 스타일입니다.</Card.Description>
-            </Card.Header>
-            <Card.Content>
-              <p className="text-gray-700">디자인 시스템의 기본 카드 스타일입니다.</p>
-            </Card.Content>
-          </Card>
+        <h2 className="text-title-3 font-bold text-gray-900">1. Loading</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="flex flex-col items-center gap-2 p-4 bg-white rounded-lg border">
+            <Loading size={16} />
+            <span className="text-caption-2 text-gray-400">Small (16px)</span>
+          </div>
+          <div className="flex flex-col items-center gap-2 p-4 bg-white rounded-lg border">
+            <Loading size={24} />
+            <span className="text-caption-2 text-gray-400">Default (24px)</span>
+          </div>
+          <div className="flex flex-col items-center gap-2 p-4 bg-white rounded-lg border">
+            <Loading size={40} />
+            <span className="text-caption-2 text-gray-400">Large (40px)</span>
+          </div>
+          <div className="flex flex-col items-center gap-2 p-4 bg-white rounded-lg border">
+            <Button
+              variant="outline"
+              onClick={() => {
+                const toastId = toast.loading("Loading data...");
+                setTimeout(() => {
+                  toast.success("Data loaded successfully!", { id: toastId });
+                }, 2000);
+              }}
+            >
+              Show Fullscreen
+            </Button>
+            <span className="text-caption-2 text-gray-400">Fullscreen (Toast)</span>
+          </div>
         </div>
       </section>
 
-      {/* 2. Badge */}
+      {/* 2. Skeleton */}
       <section className="space-y-4">
-        <h2 className="text-title-3 font-bold text-gray-900">2. Badge</h2>
-        <Card className="p-6">
-          <div className="flex flex-wrap gap-4 items-center">
-            <Badge variant="default">Default</Badge>
-            <Badge variant="secondary">Secondary</Badge>
-            <Badge variant="outline">Outline</Badge>
-            <Badge variant="destructive">Destructive</Badge>
-            <Badge variant="ghost">Ghost</Badge>
-            <Badge variant="success">Success</Badge>
-            <Badge variant="warning">Warning</Badge>
-          </div>
-        </Card>
-      </section>
-
-        {/* 2-1. Badge Sizes */}
-        <section className="flex flex-col gap-4">
-          <h2 className="text-title-3 font-bold text-gray-900">2-1. Badge Sizes</h2>
-          <div className="flex flex-wrap items-center gap-4">
-            <Badge size="sm">Small Badge</Badge>
-            <Badge size="default">Default Badge</Badge>
-            <Badge size="lg">Large Badge</Badge>
-          </div>
-          <div className="flex flex-wrap items-center gap-4">
-            <Badge variant="secondary" size="sm">Small</Badge>
-            <Badge variant="secondary" size="default">Default</Badge>
-            <Badge variant="secondary" size="lg">Large</Badge>
-          </div>
-        </section>
-
-        {/* 3. Avatar */}
-      <section className="space-y-4">
-        <h2 className="text-title-3 font-bold text-gray-900">3. Avatar</h2>
-        <Card className="p-6 space-y-8">
-          <div className="flex items-end gap-6">
-            <div className="space-y-2 text-center">
-              <Avatar size="lg">
-                <Avatar.Image src="https://github.com/shadcn.png" />
-                <Avatar.Fallback>CN</Avatar.Fallback>
-              </Avatar>
-              <p className="text-caption-3 text-gray-400">Large (40px)</p>
-            </div>
-            <div className="space-y-2 text-center">
-              <Avatar size="default">
-                <Avatar.Image src="https://github.com/shadcn.png" />
-                <Avatar.Fallback>CN</Avatar.Fallback>
-              </Avatar>
-              <p className="text-caption-3 text-gray-400">Default (32px)</p>
-            </div>
-            <div className="space-y-2 text-center">
-              <Avatar size="sm">
-                <Avatar.Image src="https://github.com/shadcn.png" />
-                <Avatar.Fallback>CN</Avatar.Fallback>
-              </Avatar>
-              <p className="text-caption-3 text-gray-400">Small (24px)</p>
-            </div>
-            <div className="space-y-2 text-center">
-              <Avatar>
-                <Avatar.Fallback className="bg-blue-500 text-white">DZ</Avatar.Fallback>
-                <Avatar.Badge className="bg-success" />
-              </Avatar>
-              <p className="text-caption-3 text-gray-400">With Badge</p>
-            </div>
-          </div>
-
+        <h2 className="text-title-3 font-bold text-gray-900">2. Skeleton</h2>
+        <div className="flex items-center space-x-4 p-4 bg-white rounded-lg border">
+          <Skeleton className="h-12 w-12 rounded-full" />
           <div className="space-y-2">
-            <p className="text-caption-1 font-semibold text-gray-700">Avatar Group</p>
-            <Avatar.Group>
-              <Avatar><Avatar.Fallback>A</Avatar.Fallback></Avatar>
-              <Avatar><Avatar.Fallback>B</Avatar.Fallback></Avatar>
-              <Avatar><Avatar.Fallback>C</Avatar.Fallback></Avatar>
-              <Avatar.GroupCount>+3</Avatar.GroupCount>
-            </Avatar.Group>
+            <Skeleton className="h-4 w-[250px]" />
+            <Skeleton className="h-4 w-[200px]" />
           </div>
-        </Card>
+        </div>
+        
+        <div className="space-y-2 p-4 bg-white rounded-lg border">
+          <Skeleton className="h-4 w-[100%]" />
+          <Skeleton className="h-4 w-[90%]" />
+          <Skeleton className="h-4 w-[80%]" />
+        </div>
       </section>
 
-      {/* 4. Carousel */}
+      {/* 3. Sonner (Toast) */}
       <section className="space-y-4">
-        <h2 className="text-title-3 font-bold text-gray-900">4. Carousel</h2>
-        <div className="px-12">
-          <Carousel className="w-full max-w-xs mx-auto">
-            <Carousel.Content>
-              {[1, 2, 3, 4, 5].map((_, index) => (
-                <Carousel.Item key={index}>
-                  <Card className="border-gray-200">
-                    <Card.Content className="flex aspect-square items-center justify-center p-6">
-                      <span className="text-title-1 font-semibold">{index + 1}</span>
-                    </Card.Content>
-                  </Card>
-                </Carousel.Item>
-              ))}
-            </Carousel.Content>
-            <Carousel.Previous />
-            <Carousel.Next />
-          </Carousel>
+        <h2 className="text-title-3 font-bold text-gray-900">3. Sonner (Toast)</h2>
+        <div className="flex flex-wrap gap-4">
+          <Button
+            variant="outline"
+            onClick={() => toast("Event has been created", {
+              description: "Sunday, December 03, 2023 at 9:00 AM",
+              action: {
+                label: "Undo",
+                onClick: () => console.log("Undo"),
+              },
+            })}
+          >
+            Default Toast
+          </Button>
+          <Button
+            variant="default"
+            onClick={() => toast.success("Successfully saved!")}
+          >
+            Success
+          </Button>
+          <Button
+            variant="destructive"
+            onClick={() => toast.error("Something went wrong.")}
+          >
+            Error
+          </Button>
+          <Button
+            variant="outline"
+            onClick={() => toast.warning("Check your connection.")}
+          >
+            Warning
+          </Button>
+          <Button
+            variant="secondary"
+            onClick={() => toast.info("New update available.")}
+          >
+            Info
+          </Button>
+        </div>
+      </section>
+
+      {/* 4. Progress */}
+      <section className="space-y-4">
+        <h2 className="text-title-3 font-bold text-gray-900">4. Progress</h2>
+        <div className="space-y-6 p-6 bg-white rounded-lg border">
+          <div className="space-y-2">
+            <div className="flex justify-between text-sm text-gray-500">
+              <span>Dark Gray (Default)</span>
+              <span>{progress}%</span>
+            </div>
+            <Progress value={progress} />
+          </div>
+          
+          <Button onClick={startProgress}>
+            Start Progress
+          </Button>
         </div>
       </section>
     </div>

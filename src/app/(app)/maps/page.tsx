@@ -39,7 +39,7 @@ export default function MapsPage() {
       <h1 className="text-title-2 font-bold">Kakao Map Demo</h1>
       <div 
         ref={mapRef} 
-        className="w-full flex-1 rounded-xl border border-gray-200 shadow-sm bg-gray-100"
+        className="w-full flex-1 rounded-xl border border-border-default shadow-sm bg-bg-neutral"
       />
       <Script
         src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_JS_KEY}&autoload=false`}

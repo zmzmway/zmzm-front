@@ -9,11 +9,11 @@ export const buttonVariants = cva(
         destructive:
           "bg-error text-white hover:bg-error/90 focus-visible:ring-error/20",
         outline:
-          "border border-gray-200 bg-background shadow-xs hover:bg-gray-100 hover:text-gray-900",
+          "border border-gray-200 bg-background shadow-xs hover:bg-bg-neutral hover:text-gray-900",
         secondary:
           "bg-blue-100 text-blue-700 hover:bg-blue-100/80",
         ghost:
-          "hover:bg-gray-100 hover:text-gray-900",
+          "hover:bg-bg-neutral hover:text-gray-900",
         link: "text-blue-500 underline-offset-4 hover:underline",
       },
       size: {

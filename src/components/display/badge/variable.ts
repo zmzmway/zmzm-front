@@ -13,10 +13,10 @@ export const badgeVariants = cva(
         warning: "bg-warning text-gray-900 hover:bg-warning/90",
         success: "bg-success text-white hover:bg-success/90",
         outline:
-          "border-gray-200 text-foreground hover:bg-gray-100 hover:text-gray-900",
-        ghost: "hover:bg-gray-100 hover:text-gray-900",
+          "border-gray-200 text-foreground hover:bg-bg-neutral hover:text-gray-900",
+        ghost: "hover:bg-bg-neutral hover:text-gray-900",
         link: "text-blue-500 underline-offset-4 hover:underline",
-        card: "bg-white text-gray-900 border-gray-100 hover:bg-gray-50",
+        card: "bg-white text-gray-900 border-gray-100 hover:bg-bg-neutral",
         custom: "",
       },
       size: {
