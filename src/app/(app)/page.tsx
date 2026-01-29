@@ -15,11 +15,12 @@ import {
   FormMessage,
   Card,
 } from "@/components";
-import { Plus, Bell, Search, Settings, ChevronRight } from "lucide-react";
+import { Plus, Bell, Search, Settings, ChevronRight, Eye, EyeOff } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as zod from "zod";
 import { toast } from "sonner";
+import { useState } from "react";
 
 const formSchema = zod.object({
   username: zod.string().min(2, {
@@ -34,6 +35,7 @@ const formSchema = zod.object({
 });
 
 export default function RootPage() {
+  const [showPassword, setShowPassword] = useState(false);
   const form = useForm<zod.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -150,19 +152,82 @@ export default function RootPage() {
       <section className="space-y-4">
         <h2 className="text-title-3 font-bold text-gray-900">2. Basic Inputs</h2>
         <Card className="p-6 space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-4">
+              <h3 className="text-caption-1 font-semibold text-gray-500">Variants</h3>
+              <div className="grid gap-2">
+                <Input placeholder="Default" />
+                <Input variant="filled" placeholder="Filled" />
+                <Input variant="flushed" placeholder="Flushed" />
+              </div>
+            </div>
+            
+            <div className="space-y-4">
+              <h3 className="text-caption-1 font-semibold text-gray-500">Inputs with Icons & Actions</h3>
+              <div className="grid gap-2">
+                <Input leftIcon={<Search className="size-4" />} placeholder="Search..." />
+                
+                <Input 
+                  placeholder="Enter password"
+                  type={showPassword ? "text" : "password"}
+                  rightIcon={
+                    <Button 
+                      variant="ghost" 
+                      size="xs" 
+                      isIcon 
+                      onClick={() => setShowPassword(!showPassword)}
+                      className="hover:bg-transparent [&_svg]:transition-all [&_svg]:hover:stroke-[3]"
+                    >
+                      {showPassword ? <EyeOff className="size-3.5" /> : <Eye className="size-3.5" />}
+                    </Button>
+                  }
+                />
+
+                <Input 
+                  placeholder="Multiple icons" 
+                  rightIcon={
+                    <>
+                      <Search className="size-4" />
+                      <Settings className="size-4" />
+                    </>
+                  }
+                />
+              </div>
+            </div>
+          </div>
+
           <div className="grid gap-2">
             <Label htmlFor="email-input">Email Address</Label>
             <Input id="email-input" type="email" placeholder="example@email.com" />
           </div>
-          <div className="grid gap-2">
-            <Label htmlFor="password-input">Password</Label>
-            <Input id="password-input" type="password" placeholder="Enter your password" />
-          </div>
+          
           <div className="flex items-center space-x-2">
-            <Checkbox id="terms1" />
-            <Label htmlFor="terms1" className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-              Accept terms and conditions
-            </Label>
+            <Checkbox 
+              id="terms1" 
+              label="Accept terms and conditions (Label Prop)" 
+            />
+          </div>
+          
+          <div className="flex items-center space-x-4 pt-4 border-t border-gray-100">
+            <Checkbox id="chk-sm" size="sm" label="Small" />
+            <Checkbox id="chk-def" label="Default" />
+            <Checkbox id="chk-lg" size="lg" rounded="rounded-md" label="Large (Rounded-md)" />
+          </div>
+
+          <div className="space-y-2 pt-4 border-t border-gray-100">
+            <h3 className="text-caption-1 font-semibold text-gray-500">Rounded Variations</h3>
+            <div className="flex flex-wrap gap-4">
+              <Checkbox id="rounded-none" rounded="rounded-none" label="None" />
+              <Checkbox id="rounded-sm" rounded="rounded-sm" label="SM" />
+              <Checkbox id="rounded-md" rounded="rounded-md" label="MD (Default)" />
+              <Checkbox id="rounded-lg" rounded="rounded-lg" label="LG" />
+              <Checkbox id="rounded-full" rounded="rounded-full" label="Full" />
+            </div>
+          </div>
+
+          <div className="flex items-center space-x-4 pt-4 border-t border-gray-100">
+            <span className="text-sm text-gray-500">Icon Only:</span>
+            <Checkbox id="chk-icon" variant="icon-only" size="lg" label="Toggle Me" />
           </div>
         </Card>
       </section>
