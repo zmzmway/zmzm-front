@@ -1,1 +1,3 @@
-export type InputProps = React.ComponentProps<"input">;
+import { ComponentProps } from "react";
+
+export interface InputProps extends ComponentProps<"input"> {}

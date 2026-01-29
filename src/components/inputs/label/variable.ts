@@ -1,3 +1,7 @@
-export const LABEL_STYLES = {
-  root: "flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50",
-}
+import { cva } from "class-variance-authority";
+
+export const LABEL_VARIANTS = {
+  base: "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
+} as const;
+
+export const labelVariants = cva(LABEL_VARIANTS.base);

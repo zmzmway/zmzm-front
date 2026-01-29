@@ -1,18 +1,14 @@
 import { cn } from "@/libs";
-import { INPUT_STYLES } from "./variable";
+import { inputVariants } from "./variable";
 import { InputProps } from "./type";
+import { SLOT } from "./constants";
 
 function Input({ className, type, ...props }: InputProps) {
   return (
     <input
       type={type}
-      data-slot="input"
-      className={cn(
-        INPUT_STYLES.base,
-        INPUT_STYLES.focus,
-        INPUT_STYLES.error,
-        className,
-      )}
+      data-slot={SLOT.ROOT}
+      className={cn(inputVariants(), className)}
       {...props}
     />
   );

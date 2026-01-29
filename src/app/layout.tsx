@@ -16,6 +16,7 @@ export default function RootLayout({
     <html lang="ko" suppressHydrationWarning>
       <body
         className={`antialiased ${pretendard.variable}`}
+        suppressHydrationWarning
       >
         <Provider themeProps={themeConfig}>
           {children}
