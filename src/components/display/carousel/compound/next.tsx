@@ -1,16 +1,17 @@
 "use client";
 
 import { ComponentProps } from "react";
-import { ArrowRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { cn } from "@/libs";
 import { Button } from "@/components/inputs/button";
 import { CAROUSEL_STYLES } from "../variable";
 import { useCarouselContext } from "./context";
-import { ORIENTATION, SLOT } from "../constants";
+import { BASIC_STYLES, ORIENTATION, SLOT } from "../constants";
+import { ButtonProps } from "@/components/inputs/button/type";
 
 export function Next({
-  variant = "outline",
-  size = "icon",
+  variant = BASIC_STYLES.BUTTON_VARIANT as ButtonProps["variant"],
+  size = BASIC_STYLES.BUTTON_SIZE as ButtonProps["size"],
   className,
   ...props
 }: ComponentProps<typeof Button>) {
@@ -24,15 +25,15 @@ export function Next({
       className={cn(
         CAROUSEL_STYLES.next,
         orientation === ORIENTATION.HORIZONTAL
-          ? "top-1/2 -right-12 -translate-y-1/2"
-          : "-bottom-12 left-1/2 -translate-x-1/2 rotate-90",
+          ? BASIC_STYLES.HORIZONTAL_BUTTON_NEXT
+          : BASIC_STYLES.VERTICAL_BUTTON_NEXT,
         className,
       )}
       disabled={!canScrollNext}
       onClick={scrollNext}
       {...props}
     >
-      <ArrowRight />
+      <ChevronRight />
       <span className="sr-only">Next slide</span>
     </Button>
   );
