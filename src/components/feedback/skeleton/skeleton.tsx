@@ -1,13 +1,13 @@
 import { cn } from "@/libs";
-import { SKELETON_STYLES } from "./variable";
+import { skeletonVariants } from "./variable";
 import { SkeletonProps } from "./type";
-import { SLOT } from "./constants";
+import { SLOT, DEFAULT } from "./constants";
 
-function Skeleton({ className, ...props }: SkeletonProps) {
+function Skeleton({ className, variant = DEFAULT.VARIANT, ...props }: SkeletonProps) {
   return (
     <div
       data-slot={SLOT.ROOT}
-      className={cn(SKELETON_STYLES.root, className)}
+      className={cn(skeletonVariants({ variant }), className)}
       {...props}
     />
   );

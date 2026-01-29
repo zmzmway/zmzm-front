@@ -164,6 +164,16 @@
     }
   }
 
+  @keyframes shimmer-diagonal-bg {
+    0% {
+      background-position: 100% 100%;
+    }
+    100% {
+      background-position: 0% 0%;
+    }
+  }
+
+  --animate-shimmer-diagonal: shimmer-diagonal-bg 1.5s infinite linear;
   --animate-slide-up: slide-up 0.5s var(--ease-spring) forwards;
   --animate-fade-in: fade-in 0.3s ease-out forwards;
   --animate-scale-press: scale-press 0.2s ease-out;

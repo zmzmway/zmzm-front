@@ -80,10 +80,10 @@ export default function RootPage() {
       <section className="space-y-4">
         <h2 className="text-title-3 font-bold text-gray-900">2. Skeleton</h2>
         <div className="flex items-center space-x-4 p-4 bg-white rounded-lg border">
-          <Skeleton className="h-12 w-12 rounded-full" />
+          <Skeleton  className="h-12 w-12 rounded-full" />
           <div className="space-y-2">
-            <Skeleton className="h-4 w-[250px]" />
-            <Skeleton className="h-4 w-[200px]" />
+            <Skeleton  className="h-4 w-[250px]" />
+            <Skeleton  className="h-4 w-[200px]" />
           </div>
         </div>
         
