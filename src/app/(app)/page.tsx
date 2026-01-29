@@ -11,6 +11,7 @@ import { useState, useEffect } from "react";
 
 export default function RootPage() {
   const [progress, setProgress] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   const startProgress = () => {
     setProgress(0);
@@ -20,13 +21,28 @@ export default function RootPage() {
           clearInterval(interval);
           return 100;
         }
-        return prev + 1; // 1%씩 증가
+        return prev + 1;
       });
-    }, 20); // 속도 조절
+    }, 20);
+  };
+
+  const showFullScreenLoading = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
   };
 
   return (
     <div className="min-h-screen bg-gray-50 p-8 space-y-12 max-w-4xl mx-auto">
+      {isLoading && (
+        <Loading 
+          fullScreen 
+          size={48} 
+          description="잠시만 기다려주세요..." 
+        />
+      )}
+
       <header className="space-y-2 pb-8 border-b border-gray-200">
         <h1 className="text-title-1 font-bold text-gray-900">Feedback Components Showcase</h1>
         <p className="text-gray-500">디자인 시스템의 피드백 요소들을 하나씩 점검합니다.</p>
@@ -45,22 +61,17 @@ export default function RootPage() {
             <span className="text-caption-2 text-gray-400">Default (24px)</span>
           </div>
           <div className="flex flex-col items-center gap-2 p-4 bg-white rounded-lg border">
-            <Loading size={40} />
-            <span className="text-caption-2 text-gray-400">Large (40px)</span>
+            <Loading size={40} description="Loading..." />
+            <span className="text-caption-2 text-gray-400">With Text</span>
           </div>
           <div className="flex flex-col items-center gap-2 p-4 bg-white rounded-lg border">
             <Button
               variant="outline"
-              onClick={() => {
-                const toastId = toast.loading("Loading data...");
-                setTimeout(() => {
-                  toast.success("Data loaded successfully!", { id: toastId });
-                }, 2000);
-              }}
+              onClick={showFullScreenLoading}
             >
               Show Fullscreen
             </Button>
-            <span className="text-caption-2 text-gray-400">Fullscreen (Toast)</span>
+            <span className="text-caption-2 text-gray-400">Fullscreen (Overlay)</span>
           </div>
         </div>
       </section>
