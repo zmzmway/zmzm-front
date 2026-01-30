@@ -8,3 +8,10 @@ export interface InputProps
   leftIcon?: ReactNode;
   rightIcon?: ReactNode;
 }
+
+export interface PasswordActionsProps {
+  showPassword: boolean;
+  onTogglePassword: () => void;
+  hasValue: boolean;
+  onClear: () => void;
+}

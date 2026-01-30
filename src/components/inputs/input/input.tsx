@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { cn } from "@/libs";
+import { PasswordActions } from "./_components";
 import { inputVariants, INPUT_STYLES } from "./variable";
 import { InputProps } from "./type";
-import { SLOT } from "./constants";
+import { SLOT, INPUT_TYPES } from "./constants";
 
 function Input({
   className,
@@ -11,18 +13,48 @@ function Input({
   shape,
   leftIcon,
   rightIcon,
+  value,
+  onChange,
   ...props
 }: InputProps) {
-  const hasIcon = !!leftIcon || !!rightIcon;
+  const [showPassword, setShowPassword] = useState(false);
+  const isPassword = type === INPUT_TYPES.PASSWORD;
+  const currentType = isPassword ? (showPassword ? INPUT_TYPES.TEXT : INPUT_TYPES.PASSWORD) : type;
+
+  const handleClear = () => {
+    if (onChange) {
+      const event = {
+        target: { value: "" },
+        currentTarget: { value: "" },
+      } as React.ChangeEvent<HTMLInputElement>;
+      onChange(event);
+    }
+  };
+
+  const hasValue = value !== undefined && value !== null && value !== "";
+
+  const passwordActions = isPassword ? (
+    <PasswordActions
+      showPassword={showPassword}
+      onTogglePassword={() => setShowPassword(!showPassword)}
+      hasValue={hasValue}
+      onClear={handleClear}
+    />
+  ) : null;
+
+  const finalRightIcon = rightIcon || passwordActions;
+  const hasIcon = !!leftIcon || !!finalRightIcon;
 
   const inputElement = (
     <input
-      type={type}
+      type={currentType}
+      value={value}
+      onChange={onChange}
       data-slot={SLOT.ROOT}
       className={cn(
         inputVariants({ variant, size, shape }),
         leftIcon && "pl-10",
-        rightIcon && "pr-12",
+        finalRightIcon && "pr-16",
         "peer",
         className,
       )}
@@ -42,9 +74,9 @@ function Input({
         </span>
       )}
       {inputElement}
-      {rightIcon && (
+      {finalRightIcon && (
         <span className={cn(INPUT_STYLES.icon, "right-3")}>
-          {rightIcon}
+          {finalRightIcon}
         </span>
       )}
     </div>

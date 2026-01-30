@@ -248,10 +248,12 @@
   select:-webkit-autofill:hover,
   select:-webkit-autofill:focus,
   input:-internal-autofill-selected {
-    -webkit-text-fill-color: var(--color-text-strong) !important;
-    -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
-    background-color: transparent !important;
-    transition: background-color 5000s ease-in-out 0s !important;
+    -webkit-text-fill-color: var(--color-text-strong);
+    /* Use a shadow that matches the intended background (usually white or transparent) */
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+    transition: background-color 5000s ease-in-out 0s;
+    color: var(--color-text-strong);
+    caret-color: var(--color-text-strong);
   }
 }
 

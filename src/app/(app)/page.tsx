@@ -1,21 +1,15 @@
 "use client";
 
 import {
-  Button,
-  Checkbox,
-  Fab,
-  Input,
-  Label,
   Form,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormControl,
-  FormDescription,
-  FormMessage,
+  Fab,
+  Label,
   Card,
+  Button,
+  Input,
+  Checkbox,
 } from "@/components";
-import { Plus, Bell, Search, Settings, ChevronRight, Eye, EyeOff } from "lucide-react";
+import { Plus, Bell, Search, Settings, ChevronRight, Eye, EyeOff, X } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as zod from "zod";
@@ -29,23 +23,29 @@ const formSchema = zod.object({
   email: zod.string().email({
     message: "Please enter a valid email address.",
   }),
-  terms: zod.boolean().default(false).refine((val) => val === true, {
+  password: zod.string().min(8, {
+    message: "Password must be at least 8 characters.",
+  }),
+  terms: zod.boolean().refine((val) => val === true, {
     message: "You must accept the terms and conditions.",
   }),
 });
 
+type FormValues = zod.infer<typeof formSchema>;
+
 export default function RootPage() {
-  const [showPassword, setShowPassword] = useState(false);
-  const form = useForm<zod.infer<typeof formSchema>>({
+  const [passwordValue, setPasswordValue] = useState("");
+  const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       username: "",
       email: "",
+      password: "",
       terms: false,
     },
   });
 
-  function onSubmit(values: zod.infer<typeof formSchema>) {
+  function onSubmit(values: FormValues) {
     toast.success("Form submitted!", {
       description: JSON.stringify(values, null, 2),
     });
@@ -169,28 +169,14 @@ export default function RootPage() {
                 
                 <Input 
                   placeholder="Enter password"
-                  type={showPassword ? "text" : "password"}
-                  rightIcon={
-                    <Button 
-                      variant="ghost" 
-                      size="xs" 
-                      isIcon 
-                      onClick={() => setShowPassword(!showPassword)}
-                      className="hover:bg-transparent [&_svg]:transition-all [&_svg]:hover:stroke-[3]"
-                    >
-                      {showPassword ? <EyeOff className="size-3.5" /> : <Eye className="size-3.5" />}
-                    </Button>
-                  }
+                  type="password"
                 />
 
                 <Input 
-                  placeholder="Multiple icons" 
-                  rightIcon={
-                    <>
-                      <Search className="size-4" />
-                      <Settings className="size-4" />
-                    </>
-                  }
+                  placeholder="Password with Clear & Toggle"
+                  type="password"
+                  value={passwordValue}
+                  onChange={(e) => setPasswordValue(e.target.value)}
                 />
               </div>
             </div>
@@ -238,59 +224,76 @@ export default function RootPage() {
         <Card className="p-6">
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <FormField
+              <Form.Field
                 control={form.control}
                 name="username"
                 render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Username</FormLabel>
-                    <FormControl>
-                      <Input placeholder="shadcn" {...field} />
-                    </FormControl>
-                    <FormDescription>
+                  <Form.Item>
+                    <Form.Label>Username</Form.Label>
+                    <Form.Control>
+                      <Form.Input placeholder="shadcn" {...field} />
+                    </Form.Control>
+                    <Form.Tip>
                       This is your public display name.
-                    </FormDescription>
-                    <FormMessage />
-                  </FormItem>
+                    </Form.Tip>
+                    <Form.Message />
+                  </Form.Item>
                 )}
               />
-              <FormField
+              <Form.Field
                 control={form.control}
                 name="email"
                 render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email</FormLabel>
-                    <FormControl>
-                      <Input placeholder="example@email.com" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
+                  <Form.Item>
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control>
+                      <Form.Input placeholder="example@email.com" {...field} />
+                    </Form.Control>
+                    <Form.Message />
+                  </Form.Item>
                 )}
               />
-              <FormField
+              <Form.Field
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <Form.Item>
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control>
+                      <Form.Input
+                        type="password"
+                        placeholder="Enter your password"
+                        {...field}
+                      />
+                    </Form.Control>
+                    <Form.Message />
+                  </Form.Item>
+                )}
+              />
+              <Form.Field
                 control={form.control}
                 name="terms"
                 render={({ field }) => (
-                  <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
-                    <FormControl>
-                      <Checkbox
+                  <Form.Item className="flex flex-row items-start space-x-3 space-y-0">
+                    <Form.Control>
+                      <Form.Checkbox
                         checked={field.value}
                         onCheckedChange={field.onChange}
                       />
-                    </FormControl>
+                    </Form.Control>
                     <div className="space-y-1 leading-none">
-                      <FormLabel>
+                      <Form.Label>
                         Accept terms and conditions
-                      </FormLabel>
-                      <FormDescription>
+                      </Form.Label>
+                      <Form.Tip>
                         You agree to our Terms of Service and Privacy Policy.
-                      </FormDescription>
-                      <FormMessage />
+                      </Form.Tip>
+                      <Form.Message />
                     </div>
-                  </FormItem>
+                  </Form.Item>
                 )}
               />
-              <Button type="submit">Submit Form</Button>
+              <Form.Button type="submit">Submit Form</Form.Button>
             </form>
           </Form>
         </Card>

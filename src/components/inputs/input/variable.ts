@@ -19,7 +19,7 @@ export const INPUT_STYLES = {
     pill: "rounded-full px-4",
     square: "rounded-none",
   },
-  icon: "absolute top-1/2 -translate-y-1/2 text-text-placeholder peer-focus:text-primary transition-colors flex items-center gap-1.5",
+  icon: "absolute top-1/2 -translate-y-1/2 text-text-placeholder transition-colors flex items-center gap-1.5 [&_button]:hover:bg-transparent",
 } as const;
 
 export const inputVariants = cva(INPUT_STYLES.base, {
