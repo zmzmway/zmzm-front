@@ -297,7 +297,7 @@ export default function RootPage() {
       </section>
 
       {/* 4. FAB */}
-      <Fab onClick={() => toast.info("New Item Added", {
+      <Fab position="bottom-right" onClick={() => toast.info("New Item Added", {
         description: "This is a temporary toast message.",
         action: {
           label: "Undo",

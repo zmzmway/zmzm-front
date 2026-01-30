@@ -3,35 +3,30 @@
 import { cn } from "@/libs";
 import { Button } from "@/components";
 import { FabProps } from "./type";
-import { FAB_POSITION_CLASSES } from "./variable";
-import { forwardRef } from "react";
+import { FAB_STYLES } from "./variable";
+import { SLOT, DEFAULT } from "./constants";
 
-const Fab = forwardRef<HTMLButtonElement, FabProps>(
-  (
-    {
-      className,
-      variant = "default",
-      size = "icon-lg",
-      position = "bottom-right",
-      ...props
-    },
-    ref,
-  ) => {
-    return (
+export function Fab({
+  ref,
+  className,
+  variant = DEFAULT.VARIANT,
+  size = DEFAULT.SIZE,
+  position = DEFAULT.POSITION,
+  ...props
+}: FabProps) {
+  return (
+    <div
+      className={cn(FAB_STYLES.wrapper, FAB_STYLES.position[position])}
+      ref={ref}
+    >
       <Button
-        ref={ref}
+        data-slot={SLOT.ROOT}
         variant={variant}
         size={size}
-        className={cn(
-          "fixed z-50 rounded-full shadow-lg hover:shadow-xl transition-shadow",
-          FAB_POSITION_CLASSES[position ?? "bottom-right"],
-          className,
-        )}
+        isIcon
+        className={cn(FAB_STYLES.base, className)}
         {...props}
       />
-    );
-  },
-);
-Fab.displayName = "Fab";
-
-export { Fab };
+    </div>
+  );
+}
