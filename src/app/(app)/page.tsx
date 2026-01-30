@@ -229,9 +229,9 @@ export default function RootPage() {
                 name="username"
                 render={({ field }) => (
                   <Form.Item>
-                    <Form.Label>Username</Form.Label>
+                    <Form.Label required>Username</Form.Label>
                     <Form.Control>
-                      <Form.Input placeholder="shadcn" {...field} />
+                      <Form.Input placeholder="Enter username" {...field} />
                     </Form.Control>
                     <Form.Tip>
                       This is your public display name.
@@ -245,7 +245,7 @@ export default function RootPage() {
                 name="email"
                 render={({ field }) => (
                   <Form.Item>
-                    <Form.Label>Email</Form.Label>
+                    <Form.Label required>Email</Form.Label>
                     <Form.Control>
                       <Form.Input placeholder="example@email.com" {...field} />
                     </Form.Control>
@@ -258,7 +258,7 @@ export default function RootPage() {
                 name="password"
                 render={({ field }) => (
                   <Form.Item>
-                    <Form.Label>Password</Form.Label>
+                    <Form.Label required>Password</Form.Label>
                     <Form.Control>
                       <Form.Input
                         type="password"
@@ -274,22 +274,24 @@ export default function RootPage() {
                 control={form.control}
                 name="terms"
                 render={({ field }) => (
-                  <Form.Item className="flex flex-row items-start space-x-3 space-y-0">
+                  <Form.Item>
                     <Form.Control>
                       <Form.Checkbox
                         checked={field.value}
                         onCheckedChange={field.onChange}
+                        label={
+                          <div className="grid gap-1.5 leading-none">
+                            <span className="text-caption-1 font-medium text-text-strong">
+                              Accept terms and conditions
+                            </span>
+                            <span className="text-caption-3 text-text-caption">
+                              You agree to our Terms of Service and Privacy Policy.
+                            </span>
+                          </div>
+                        }
                       />
                     </Form.Control>
-                    <div className="space-y-1 leading-none">
-                      <Form.Label>
-                        Accept terms and conditions
-                      </Form.Label>
-                      <Form.Tip>
-                        You agree to our Terms of Service and Privacy Policy.
-                      </Form.Tip>
-                      <Form.Message />
-                    </div>
+                    <Form.Message />
                   </Form.Item>
                 )}
               />

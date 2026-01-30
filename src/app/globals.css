@@ -47,7 +47,7 @@
   --color-text-normal: var(--color-gray-700);
   --color-text-alternative: var(--color-gray-600);
   --color-text-caption: var(--color-gray-500);
-  --color-text-placeholder: var(--color-gray-400);
+  --color-text-placeholder: var(--color-gray-300);
   --color-text-disabled: var(--color-gray-400);
 
   /* --- Semantic Names (Background & Border) --- */

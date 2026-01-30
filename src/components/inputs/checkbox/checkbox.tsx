@@ -58,7 +58,7 @@ function Checkbox({
 
   if (label) {
     return (
-      <div className="flex items-center space-x-2">
+      <div className="flex items-start space-x-2">
         {checkbox}
         <Label htmlFor={checkboxId} className="cursor-pointer font-normal select-none">
           {label}

@@ -10,9 +10,9 @@ export const INPUT_STYLES = {
       "!rounded-none border-0 border-b border-border-default px-0 shadow-none focus-visible:ring-0 focus-visible:border-primary bg-transparent",
   },
   size: {
-    default: "h-9 px-3 py-1 text-sm",
-    sm: "h-8 px-2 text-xs",
-    lg: "h-10 px-4 text-base",
+    default: "h-9 px-3 py-1 text-caption-1",
+    sm: "h-8 px-2 text-caption-2",
+    lg: "h-10 px-4 text-caption-1",
   },
   shape: {
     default: "rounded-md",
