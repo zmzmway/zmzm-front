@@ -1,9 +1,9 @@
 import {
-  Tabs as Root,
-  TabsList as List,
-  TabsTrigger as Trigger,
-  TabsContent as Content,
-} from "./tabs";
+  Root,
+  List,
+  Trigger,
+  Content,
+} from "./compound";
 
 export const Tabs = Object.assign(Root, {
   List,

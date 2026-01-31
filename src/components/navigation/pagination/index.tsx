@@ -17,6 +17,5 @@ export const Pagination = Object.assign(Root, {
   Ellipsis,
 });
 
-export * from "./constants";
 export * from "./variable";
 export * from "./type";
