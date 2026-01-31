@@ -1,20 +1,20 @@
 import {
-  Popover as Root,
-  PopoverAnchor as Anchor,
-  PopoverContent as Content,
-  PopoverDescription as Description,
-  PopoverHeader as Header,
-  PopoverTitle as Title,
-  PopoverTrigger as Trigger,
-} from "./popover";
-
-export const Popover = Object.assign(Root, {
-  Anchor,
+  Root,
+  Trigger,
   Content,
-  Description,
+  Anchor,
   Header,
   Title,
+  Description,
+} from "./compound";
+
+export const Popover = Object.assign(Root, {
   Trigger,
+  Content,
+  Anchor,
+  Header,
+  Title,
+  Description,
 });
 
 export * from "./variable";

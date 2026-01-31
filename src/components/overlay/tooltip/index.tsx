@@ -1,14 +1,14 @@
 import {
-  Tooltip as Root,
-  TooltipContent as Content,
-  TooltipProvider as Provider,
-  TooltipTrigger as Trigger,
-} from "./tooltip";
-
-export const Tooltip = Object.assign(Root, {
-  Content,
+  Root,
   Provider,
   Trigger,
+  Content,
+} from "./compound";
+
+export const Tooltip = Object.assign(Root, {
+  Provider,
+  Trigger,
+  Content,
 });
 
 export * from "./variable";
