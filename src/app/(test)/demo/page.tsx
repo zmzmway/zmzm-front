@@ -30,18 +30,16 @@ import {
   MessageSquare,
   PlusCircle,
   Plus,
-  Github,
-  LifeBuoy,
   Cloud,
   Search,
   ChevronRight,
-  Menu,
   Star,
   Bell,
   Check,
   Heart,
   Zap,
 } from "lucide-react";
+import type { UseFormReturn } from "react-hook-form";
 import { useState } from "react";
 import { toast } from "sonner";
 import { useForm } from "react-hook-form";
@@ -559,7 +557,7 @@ const SectionFeedback = () => (
   </section>
 );
 
-const SectionInputs = ({ form, onSubmit }: { form: any, onSubmit: any }) => (
+const SectionInputs = ({ form, onSubmit }: { form: UseFormReturn<{ username: string; email: string; password: string; terms: boolean }>, onSubmit: (data: { username: string; email: string; password: string; terms: boolean }) => void }) => (
   <section className="space-y-8">
     <h2 className="text-title-2 font-bold text-gray-900 border-b pb-2">4. 입력 컴포넌트 (Inputs)</h2>
     
@@ -1089,7 +1087,7 @@ const SectionNavigation = () => (
   </section>
 );
 
-const SectionOverlay = ({ position, setPosition, showPanel, setShowPanel }: any) => (
+const SectionOverlay = ({ position, setPosition, showPanel, setShowPanel }: { position: string; setPosition: (value: string) => void; showPanel: boolean; setShowPanel: (value: boolean) => void }) => (
   <section className="space-y-8">
     <h2 className="text-title-2 font-bold text-gray-900 border-b pb-2">6. 오버레이 컴포넌트 (Overlay)</h2>
     
