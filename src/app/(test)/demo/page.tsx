@@ -10,7 +10,6 @@ import {
   Dialog,
   DropdownMenu,
   Popover,
-  Sheet,
   Tooltip,
   Checkbox,
   Fab,
@@ -1183,7 +1182,7 @@ const SectionOverlay = ({ position, setPosition, showPanel, setShowPanel }: any)
           <Dialog.Trigger asChild>
             <Button variant="outline">강제 액션 (닫기 X)</Button>
           </Dialog.Trigger>
-          <Dialog.Content showCloseButton={false} className="sm:max-w-[425px]">
+          <Dialog.Content showCloseButton={false} closeOnOverlayClick={false} closeOnEscape={false} className="sm:max-w-[425px]">
             <Dialog.Header>
               <Dialog.Title>업데이트 필요</Dialog.Title>
               <Dialog.Description>
@@ -1200,42 +1199,6 @@ const SectionOverlay = ({ position, setPosition, showPanel, setShowPanel }: any)
       </div>
     </Card>
 
-    {/* Sheets */}
-    <Card className="p-6 space-y-6">
-        <div className="space-y-2">
-        <h3 className="text-title-3 font-semibold">시트 (Sheet)</h3>
-        <p className="text-text-caption">화면 측면이나 하단에서 슬라이드되는 보조 패널입니다.</p>
-      </div>
-
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {['top', 'bottom', 'left', 'right'].map((side) => (
-          <Sheet key={side}>
-            <Sheet.Trigger asChild>
-              <Button variant="outline" className="capitalize">{side} 열기</Button>
-            </Sheet.Trigger>
-            <Sheet.Content side={side as any}>
-              <Sheet.Header>
-                <Sheet.Title>프로필 수정 ({side})</Sheet.Title>
-                <Sheet.Description>
-                  여기서 프로필을 변경하세요.
-                </Sheet.Description>
-              </Sheet.Header>
-              <div className="grid gap-4 py-4">
-                <div className="grid grid-cols-4 items-center gap-4">
-                  <Label htmlFor="name" className="text-right">이름</Label>
-                  <Input id="name" defaultValue="홍길동" className="col-span-3" />
-                </div>
-              </div>
-              <Sheet.Footer>
-                <Sheet.Close asChild>
-                  <Button type="submit">저장</Button>
-                </Sheet.Close>
-              </Sheet.Footer>
-            </Sheet.Content>
-          </Sheet>
-        ))}
-      </div>
-    </Card>
 
     {/* Dropdown Menu */}
     <Card className="p-6 space-y-6">

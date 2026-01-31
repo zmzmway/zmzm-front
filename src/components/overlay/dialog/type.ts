@@ -19,6 +19,8 @@ export interface DialogContentProps extends React.ComponentProps<
   typeof DialogPrimitive.Content
 > {
   showCloseButton?: boolean;
+  closeOnOverlayClick?: boolean;
+  closeOnEscape?: boolean;
 }
 export type DialogHeaderProps = React.ComponentProps<"div">;
 export interface DialogFooterProps extends React.ComponentProps<"div"> {

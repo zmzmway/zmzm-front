@@ -10,12 +10,10 @@ import {
   Dialog,
   DropdownMenu,
   Popover,
-  Sheet,
   Tooltip,
 } from "@/components";
 import { 
   CreditCard, 
-  Keyboard, 
   Settings, 
   User, 
   Users, 
@@ -255,11 +253,11 @@ export default function RootPage() {
               <Dialog.Trigger asChild>
                 <Button variant="outline">Force Action (No Close)</Button>
               </Dialog.Trigger>
-              <Dialog.Content showCloseButton={false} className="sm:max-w-[425px]">
+              <Dialog.Content showCloseButton={false} closeOnOverlayClick={false} closeOnEscape={false} className="sm:max-w-[425px]">
                 <Dialog.Header>
                   <Dialog.Title>Update Required</Dialog.Title>
                   <Dialog.Description>
-                    You must update your profile to continue. This dialog cannot be closed via the 'X' button.
+                    You must update your profile to continue. This dialog cannot be closed via overlay click or ESC key.
                   </Dialog.Description>
                 </Dialog.Header>
                 <Dialog.Footer>
@@ -272,42 +270,7 @@ export default function RootPage() {
           </div>
         </Card>
 
-        {/* Sheets */}
-        <Card className="p-6 space-y-6">
-           <div className="space-y-2">
-            <h3 className="text-title-3 font-semibold">Sheet</h3>
-            <p className="text-text-caption">화면 측면이나 하단에서 슬라이드되는 보조 패널입니다.</p>
-          </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            {['top', 'bottom', 'left', 'right'].map((side) => (
-              <Sheet key={side}>
-                <Sheet.Trigger asChild>
-                  <Button variant="outline" className="capitalize">Open {side}</Button>
-                </Sheet.Trigger>
-                <Sheet.Content side={side as any}>
-                  <Sheet.Header>
-                    <Sheet.Title>Edit profile ({side})</Sheet.Title>
-                    <Sheet.Description>
-                      Make changes to your profile here. Click save when you're done.
-                    </Sheet.Description>
-                  </Sheet.Header>
-                  <div className="grid gap-4 py-4">
-                    <div className="grid grid-cols-4 items-center gap-4">
-                      <Label htmlFor="name" className="text-right">Name</Label>
-                      <Input id="name" defaultValue="Pedro Duarte" className="col-span-3" />
-                    </div>
-                  </div>
-                  <Sheet.Footer>
-                    <Sheet.Close asChild>
-                      <Button type="submit">Save changes</Button>
-                    </Sheet.Close>
-                  </Sheet.Footer>
-                </Sheet.Content>
-              </Sheet>
-            ))}
-          </div>
-        </Card>
 
         {/* Dropdown Menu */}
         <Card className="p-6 space-y-6">
