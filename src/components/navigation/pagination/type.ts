@@ -1,10 +1,27 @@
+import Link from "next/link";
 import { type Button } from "@/components";
 
-export type PaginationProps = React.ComponentProps<"nav">;
+export type PaginationSize = "sm" | "default" | "lg";
+
+export type PaginationProps = {
+  size?: PaginationSize;
+} & React.ComponentProps<"nav">;
+
 export type PaginationContentProps = React.ComponentProps<"ul">;
+
 export type PaginationItemProps = React.ComponentProps<"li">;
+
 export type PaginationLinkProps = {
   isActive?: boolean;
 } & Pick<React.ComponentProps<typeof Button>, "size"> &
-  React.ComponentProps<"a">;
-export type PaginationEllipsisProps = React.ComponentProps<"span">;
+  React.ComponentProps<typeof Link>;
+
+export type PaginationNavigationProps = {
+  label?: string;
+  hideText?: boolean;
+} & PaginationLinkProps;
+
+export type PaginationEllipsisProps = {
+  label?: string;
+  size?: PaginationSize;
+} & React.ComponentProps<"span">;
